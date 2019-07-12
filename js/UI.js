@@ -69,11 +69,11 @@ OregonH.UI.fight = function fight() {
   if (damage < this.caravan.crew) {
     this.caravan.crew -= damage;
     this.caravan.money += gold;
-    this.notify(`${damage} people were killed fighting`, 'negative');
+    this.notify(`${damage} people had their heads put on pikes`, 'negative');
     this.notify(`Found $ ${gold}`, 'gold');
   } else {
     this.caravan.crew = 0;
-    this.notify('Everybody died in the fight', 'negative');
+    this.notify('Everyone died. The end!', 'negative');
   }
 
   // resume journey
@@ -93,10 +93,10 @@ OregonH.UI.runaway = function runaway() {
   // check there are survivors
   if (damage < this.caravan.crew) {
     this.caravan.crew -= damage;
-    this.notify(`${damage} people were killed running`, 'negative');
+    this.notify(`${damage} people were killed for running like the panzies they were`, 'negative');
   } else {
     this.caravan.crew = 0;
-    this.notify('Everybody died running away', 'negative');
+    this.notify('Everybody died running away... you are a disgrace to the name of degenerate', 'negative');
   }
 
   // remove event listener

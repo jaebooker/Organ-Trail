@@ -97,7 +97,7 @@ OregonH.Game.updateGame = function updateGame() {
 
   // game over no food
   if (this.caravan.food === 0) {
-    this.ui.notify('Your caravan starved to death', 'negative');
+    this.ui.notify('Your caravan kept eating each other, until the sole survivor starved to death', 'negative');
     this.gameActive = false;
     return;
   }
@@ -114,14 +114,14 @@ OregonH.Game.updateGame = function updateGame() {
   // check if everyone died
   if (this.caravan.crew <= 0) {
     this.caravan.crew = 0;
-    this.ui.notify('Everyone died', 'negative');
+    this.ui.notify('Everyone died. The end!', 'negative');
     this.gameActive = false;
     return;
   }
 
   // check win game
   if (this.caravan.distance >= OregonH.FINAL_DISTANCE) {
-    this.ui.notify('You have returned home!', 'positive');
+    this.ui.notify('You have slain all your enemies, and consumed them, making you stronger. You are the Alpha and the Omega. You are the Beta, the Theta, to the max! All who see you fall down in worship. You are like a god. You ARE God. You are... ', 'positive');
     this.gameActive = false;
     return;
   }

@@ -69,7 +69,7 @@ OregonH.Caravan.updateWeight = function updateWeight() {
   }
 
   if (droppedGuns) {
-    this.ui.notify(`Left ${droppedGuns} guns behind`, 'negative');
+    this.ui.notify(`Left ${droppedGuns} machetes behind`, 'negative');
   }
 
   while (this.food && this.capacity <= this.weight) {
@@ -79,7 +79,7 @@ OregonH.Caravan.updateWeight = function updateWeight() {
   }
 
   if (droppedFood) {
-    this.ui.notify(`Left ${droppedFood} food provisions behind`, 'negative');
+    this.ui.notify(`Left ${droppedFood} human organs behind`, 'negative');
   }
 };
 

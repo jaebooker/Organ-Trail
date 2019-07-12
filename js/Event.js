@@ -11,21 +11,21 @@ OregonH.Event.eventTypes = [
     notification: 'negative',
     stat: 'crew',
     value: -3,
-    text: 'Food intoxication. Casualties: ',
+    text: 'Your crew got wasted and started a fight. Casualties: ',
   },
   {
     type: 'STAT-CHANGE',
     notification: 'negative',
     stat: 'crew',
     value: -4,
-    text: 'Flu outbreak. Casualties: ',
+    text: 'Ebola outbreak. Casualties: ',
   },
   {
     type: 'STAT-CHANGE',
     notification: 'negative',
     stat: 'food',
     value: -10,
-    text: 'Worm infestation. Food lost: ',
+    text: 'Parasite infestation. Food lost: ',
   },
   {
     type: 'STAT-CHANGE',
@@ -39,21 +39,21 @@ OregonH.Event.eventTypes = [
     notification: 'negative',
     stat: 'oxen',
     value: -1,
-    text: 'Ox flu outbreak. Casualties: ',
+    text: 'Zombie ox outbreak. Casualties: ',
   },
   {
     type: 'STAT-CHANGE',
     notification: 'positive',
     stat: 'food',
     value: 20,
-    text: 'Found wild berries. Food added: ',
+    text: 'Found wild worms. Food added: ',
   },
   {
     type: 'STAT-CHANGE',
     notification: 'positive',
     stat: 'food',
     value: 20,
-    text: 'Found wild berries. Food added: ',
+    text: 'Found wild snakes. Food added: ',
   },
   {
     type: 'STAT-CHANGE',
@@ -98,17 +98,17 @@ OregonH.Event.eventTypes = [
   {
     type: 'ATTACK',
     notification: 'negative',
-    text: 'Bandits are attacking you',
+    text: 'Serial killers are attacking you, demanding you put the lotion on the skin',
   },
   {
     type: 'ATTACK',
     notification: 'negative',
-    text: 'Bandits are attacking you',
+    text: 'A crazy new cult is attacking you, demanding that you bow to the great Platapus of Light',
   },
   {
     type: 'ATTACK',
     notification: 'negative',
-    text: 'Bandits are attacking you',
+    text: 'Some biker gang is trying to cause a bit of trouble. You know what to do, right?',
   },
 ];
 
