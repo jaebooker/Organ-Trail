@@ -23,9 +23,9 @@ OregonH.Event.eventTypes = [
   {
     type: 'STAT-CHANGE',
     notification: 'negative',
-    stat: 'food',
+    stat: 'crew',
     value: -10,
-    text: 'Parasite infestation. Food lost: ',
+    text: 'Parasite infestation. Chests bursting: ',
   },
   {
     type: 'STAT-CHANGE',
@@ -65,7 +65,7 @@ OregonH.Event.eventTypes = [
   {
     type: 'SHOP',
     notification: 'neutral',
-    text: 'You have found a shop',
+    text: 'Some small band of misfits',
     products: [
       { item: 'food', qty: 20, price: 50 },
       { item: 'oxen', qty: 1, price: 200 },
@@ -76,7 +76,7 @@ OregonH.Event.eventTypes = [
   {
     type: 'SHOP',
     notification: 'neutral',
-    text: 'You have found a shop',
+    text: 'Some starving people with supplies',
     products: [
       { item: 'food', qty: 30, price: 50 },
       { item: 'oxen', qty: 1, price: 200 },
@@ -87,7 +87,7 @@ OregonH.Event.eventTypes = [
   {
     type: 'SHOP',
     notification: 'neutral',
-    text: 'Smugglers sell various goods',
+    text: 'Smugglers selling various goods',
     products: [
       { item: 'food', qty: 20, price: 60 },
       { item: 'oxen', qty: 1, price: 300 },

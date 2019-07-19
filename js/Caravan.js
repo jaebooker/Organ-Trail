@@ -58,19 +58,19 @@ OregonH.Caravan.updateWeight = function updateWeight() {
   this.capacity = this.oxen * OregonH.WEIGHT_PER_OX + this.crew * OregonH.WEIGHT_PER_PERSON;
 
   // how much weight do we currently have
-  this.weight = this.food * OregonH.FOOD_WEIGHT + this.firepower * OregonH.FIREPOWER_WEIGHT;
+  this.weight = this.food * OregonH.FOOD_WEIGHT;
 
   // drop things behind if it's too much weight
   // assume guns get dropped before food
-  while (this.firepower && this.capacity <= this.weight) {
-    this.firepower -= 1;
-    this.weight -= OregonH.FIREPOWER_WEIGHT;
-    droppedGuns += 1;
-  }
-
-  if (droppedGuns) {
-    this.ui.notify(`Left ${droppedGuns} machetes behind`, 'negative');
-  }
+  // while (this.firepower && this.capacity <= this.weight) {
+  //   this.firepower -= 1;
+  //   this.weight -= OregonH.FIREPOWER_WEIGHT;
+  //   droppedGuns += 1;
+  // }
+  //
+  // if (droppedGuns) {
+  //   this.ui.notify(`Left ${droppedGuns} machetes behind`, 'negative');
+  // }
 
   while (this.food && this.capacity <= this.weight) {
     this.food -= 1;

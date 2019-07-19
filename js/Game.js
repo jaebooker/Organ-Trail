@@ -121,7 +121,26 @@ OregonH.Game.updateGame = function updateGame() {
 
   // check win game
   if (this.caravan.distance >= OregonH.FINAL_DISTANCE) {
-    this.ui.notify('You have slain all your enemies, and consumed them, making you stronger. You are the Alpha and the Omega. You are the Beta, the Theta, to the max! All who see you fall down in worship. You are like a god. You ARE God. You are... ', 'positive');
+    let sayMyName = "President Vlad the Unmemorable"
+    if (this.caravan.crew > 30) {
+        sayMyName = "High Priest Zoltan the Charismatic"
+    }
+    if (this.caravan.food > 70) {
+        sayMyName = "Igor the Fat"
+    }
+    if (this.caravan.food < 10) {
+        sayMyName = "Ivan the Bony-Ribbed"
+    }
+    if (this.caravan.firepower > 10) {
+        sayMyName = "Sloan the Terrible"
+    }
+    if ((this.caravan.firepower > 10) && (this.caravan.crew > 30)) {
+        sayMyName = "Emperor Igor the Cruel"
+    }
+    if (this.caravan.oxen > 8) {
+        sayMyName = "Captain Ahab the Swift"
+    }
+    this.ui.notify('You have slain all your enemies, and consumed them, making you stronger. You are the Alpha and the Omega. You are the Beta, the Theta, to the max! All who see you fall down in worship. You are like a god. You ARE God. You are... ' + sayMyName, 'positive');
     this.gameActive = false;
     return;
   }
