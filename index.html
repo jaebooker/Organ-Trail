@@ -1,91 +1,55 @@
-<!--
-  https://gamedevacademy.org/js13kgames-tutorial/
-
-  Game from the tutorial based on Oregon Trail
--->
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Learn Game Development at Zenva Academy | Zenva.com</title>
-    <link rel="stylesheet" href="css/style.css"/>
-  </head>
-  <body>
-    <h1>Organ Trail</h1>
-    <p>Hunt for human organs with your band of savages</p>
-    <div id="home">HUMAN HUNTING!!! HUMAN HUNTING!!!! THE STRONG WILL SURVIVE AND THE BEAST SHALL RISE!! AS IT WAS PROPHESIED!!!</div>
-    <div id="journey">
-      <div id="stats-area">
-        <div class="stat">Day <span id="stat-day" class="stat-value"></span></div>
-        <div class="stat">Distance <span id="stat-distance" class="stat-value"></span></div>
-        <div class="stat">Crew <span id="stat-crew" class="stat-value"></span></div>
-        <div class="stat">Oxen <span id="stat-oxen" class="stat-value"></span></div>
-        <div class="stat">Human Organs <span id="stat-food" class="stat-value"></span></div>
-        <div class="stat">Money <span id="stat-money" class="stat-value"></span></div>
-        <div class="stat">Firepower <span id="stat-firepower" class="stat-value"></span></div>
-        <div class="stat">Weight <span id="stat-weight" class="stat-value"></span><span id="stat-capacity" class="stat-value"></span></div>
-      </div>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Organ Trail</title>
+  <meta name="description" content="Hunt for human organs with your band of savages. A wasteland caravan game in the style of the 1985 Oregon Trail.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'><rect width='7' height='7' fill='black'/><path fill='white' d='M1 0h5v1h1v4h-1v1h-5v-1h-1v-4h1z'/><path fill='black' d='M1 2h1v2h-1zM5 2h1v2h-1zM2 6h1v1h-1zM4 6h1v1h-1z'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main id="cabinet">
+    <header>
+      <span class="brand">THE ORGAN TRAIL</span>
+      <button id="mute" type="button">SOUND: ON</button>
+    </header>
 
-      <div class="updates-area" id="updates-area"></div>
-
-      <div id="shop" class="hidden">
-        <div id="prods">
-        </div>
-        <button>Leave shop</button>
-      </div>
-      <div id="attack" class="hidden">
-        <div id="attack-description"></div>
-        <!-- <button id="fight">Slay them, eat their organs, and use their skin as a canvas bag (always have to think of the environment, especially given all the nuclear waste)</button>-->
-        <button id="fight">Slay them and make their teeth into a necklace</button>
-        <button id="runaway">Run away like a little bitch</button>
-      </div>
-      <div class="updates-area" id="updates-area"></div>
-      <div id="progress-area">
-        <img id="caravan" src="images/fantasy.png" />
-        <img id="trees" src="images/sunsetb.jpg" />
-      </div>
+    <div id="screen">
+      <canvas id="scene" width="320" height="132" aria-label="Your caravan on the trail"></canvas>
+      <div id="overlay"></div>
     </div>
-    <div id="event">THE END HAS COME AND GONE!</div>
-    <!--
-Challenges
 
-1) Get the tutorial working
-2) Play the game
-3) Check for errors.
-  - Check for any errors you might find
-  - Play test and make sure all of the features in the game are working.
-4) Update the code to more modern and easier to understand syntax
-  - Replace var with let, and const
-  - Object deconstruction
-5) OOP - Define class Objects for Caravan, Event, Game, and UI
-    -->
+    <div id="trail" class="hidden" aria-hidden="true">
+      <div class="line"></div>
+      <div id="marks"></div>
+      <div id="marker"></div>
+    </div>
 
-    <script src="js/Event.js"></script>
-    <script src="js/Caravan.js"></script>
-    <script src="js/UI.js"></script>
-    <script src="js/Game.js"></script>
+    <section id="hud" class="hidden">
+      <dl id="stats">
+        <div><dt>Day</dt><dd id="stat-day"></dd></div>
+        <div><dt>Miles traveled</dt><dd id="stat-distance"></dd></div>
+        <div><dt>Crew</dt><dd id="stat-crew"></dd></div>
+        <div><dt>Oxen</dt><dd id="stat-oxen"></dd></div>
+        <div><dt>Human organs</dt><dd id="stat-food"></dd></div>
+        <div><dt>Money</dt><dd id="stat-money"></dd></div>
+        <div><dt>Firepower</dt><dd id="stat-firepower"></dd></div>
+        <div><dt>Weight</dt><dd id="stat-weight"></dd></div>
+      </dl>
+      <div id="log" aria-live="polite"></div>
+    </section>
 
-    <script>
-      class Apple {
-        constructor(size, color) {
-          this.size = size
-          this.color = color
-        }
-      }
+    <section id="panel">
+      <p id="prompt"></p>
+      <div id="options"></div>
+    </section>
+  </main>
 
-      class Pastry extends Apple {
-        constructor(crispiness) {
-          super(21, 'chocolate')
-          this.crispiness = crispiness
-        }
-      }
-
-      const apple = new Apple(33, 'red')
-      console.log(apple)
-
-      const biscotti = new Pastry(999)
-      console.log(biscotti)
-    </script>
-  </body>
+  <script src="js/art.js"></script>
+  <script src="js/Game.js"></script>
+</body>
 </html>

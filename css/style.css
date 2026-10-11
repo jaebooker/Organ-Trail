@@ -1,119 +1,202 @@
-html {
-  height: 100%;
+:root {
+  --green: #14f53c;
+  --white: #fff;
+  --purple: #ff44fd;
+  --orange: #ff6a3c;
+  --blue: #14cffd;
+  --dim: #0b8f24;
 }
 
-body {
-  padding: 0;
+* { box-sizing: border-box; }
+
+html, body {
   margin: 0;
-  border: 0;
-  height: 100%;
-  overflow: hidden;
-  font-family: Helvetica;
-  font-size: 18px;
+  min-height: 100%;
+  background: #000;
+  color: var(--green);
+  font-family: 'VT323', 'Courier New', monospace;
+  font-size: 22px;
+  line-height: 1.1;
 }
 
-.hidden {
-  display: none;
+.hidden { display: none !important; }
+
+#cabinet {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 12px 16px 32px;
 }
 
-#home {
-  background-color: red;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 10px;
 }
 
-#journey {
-  height: 100%;
-  background-color: rgb(80, 140, 230);
+.brand {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  color: var(--white);
 }
 
-#event {
-  background-color: magenta;
+button {
+  font: inherit;
+  color: var(--green);
+  background: #000;
+  border: 2px solid var(--green);
+  padding: 4px 10px;
+  cursor: pointer;
+  text-align: left;
 }
+button:hover, button:focus-visible {
+  background: var(--green);
+  color: #000;
+  outline: none;
+}
+#mute { font-size: 18px; border-color: var(--dim); color: var(--dim); white-space: nowrap; }
 
-#progress-area {
-  float: left;
+#screen {
   position: relative;
-  width: 700px;
-  margin: 10px;
+  border: 4px solid var(--white);
+  background: #000;
+  overflow: hidden;
 }
-
-#trees {
+#scene {
+  display: block;
   width: 100%;
+  aspect-ratio: 320 / 132;
   image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
-
-#caravan {
+#screen::after {
+  content: '';
   position: absolute;
-  bottom: 30px;
-  left: 0;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, transparent 0 3px, rgba(0, 0, 0, .22) 3px 4px);
 }
 
-#stats-area {
-  background-color: white;
-  float: left;
-  height: 150px;
-  width: 156px;
-  margin: 10px;
-  padding: 10px;
-  font-size: 14px;
+#overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+  font-family: 'Press Start 2P', monospace;
+  color: var(--white);
+}
+#overlay .logo {
+  margin-top: 7%;
+  font-size: clamp(16px, 5.4vw, 46px);
+  color: var(--white);
+  text-shadow: 0.08em 0.08em 0 var(--purple);
+}
+#overlay .tag {
+  margin-top: 1.4em;
+  font-size: clamp(7px, 1.5vw, 12px);
+  color: var(--green);
+  line-height: 1.6;
+  padding: 0 8px;
+}
+#overlay .hail {
+  margin-top: 5%;
+  font-size: clamp(8px, 1.8vw, 14px);
+  color: var(--green);
+}
+#overlay .name {
+  margin-top: .8em;
+  font-size: clamp(10px, 2.6vw, 22px);
+  color: var(--orange);
+  line-height: 1.4;
+  padding: 0 8px;
+}
+#overlay .epitaph {
+  margin-top: 21%;
+  width: 26%;
+  font-size: clamp(6px, 1.25vw, 11px);
+  line-height: 1.7;
+  color: var(--white);
 }
 
-
-
-.stat-value {
-  float: right;
+#trail {
+  position: relative;
+  height: 46px;
+  margin: 10px 10px 0;
+}
+#trail .line {
+  position: absolute;
+  left: 0; right: 0; top: 10px;
+  border-top: 2px dashed var(--dim);
+}
+#marks span {
+  position: absolute;
+  top: 5px;
+  width: 12px; height: 12px;
+  margin-left: -6px;
+  background: #000;
+  border: 2px solid var(--green);
+}
+#marks span.reached { background: var(--green); }
+#marks span i {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-style: normal;
+  font-size: 17px;
+  color: var(--dim);
+}
+#marks span:first-child i { left: auto; right: -8px; transform: none; }
+#marks span:last-child i { left: -8px; transform: none; }
+#marker {
+  position: absolute;
+  top: 0;
+  width: 10px; height: 22px;
+  margin-left: -5px;
+  background: var(--white);
+  transition: left .8s linear;
 }
 
-#updates-area {
-  background-color: white;
-  float: left;
-  width: 350px;
-  margin: 10px;
-  height: 150px;
-  padding: 10px;
-  font-size: 12px;
-  overflow-y: scroll;
+#hud {
+  display: grid;
+  grid-template-columns: minmax(230px, 1fr) 2fr;
+  gap: 12px;
+  margin-top: 10px;
 }
-
-.update-positive {
-  color: #669966;
+#stats, #log, #panel {
+  border: 2px solid var(--green);
+  padding: 8px 12px;
 }
+#stats { margin: 0; }
+#stats div { display: flex; justify-content: space-between; gap: 12px; }
+#stats dt { color: var(--green); }
+#stats dd { margin: 0; color: var(--white); white-space: nowrap; }
 
-.update-negative {
-  color: red;
+#log {
+  height: 196px;
+  overflow-y: auto;
+  scrollbar-color: var(--dim) #000;
 }
+#log div { margin-bottom: 4px; }
+.update-positive { color: var(--green); }
+.update-negative { color: var(--orange); }
+.update-neutral { color: var(--blue); }
 
-.update-neutral {
-  color: #90908F;
-}
+#panel { margin-top: 12px; min-height: 96px; }
+#prompt { margin: 0 0 8px; color: var(--white); }
+#options { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+#options button:disabled { border-color: var(--dim); color: var(--dim); cursor: not-allowed; background: #000; }
 
-#shop {
-  float: left;
-  background-color: white;
-  margin: 10px;
-  padding: 10px;
-  height: 90px;
-  width: 350px;
-}
-
-.product {
-  float: left;
-  margin: 5px;
-  padding: 2px;
-  border: 1px solid black;
-  font-size: 12px;
-}
-
-#shop button {
-  clear: both;
-  float: left;
-  margin: 5px;
-}
-
-#attack {
-  float: left;
-  background-color: white;
-  margin: 10px;
-  padding: 10px;
-  height: 60px;
-  width: 150px;
+@media (max-width: 640px) {
+  html, body { font-size: 19px; }
+  #cabinet { padding: 10px 16px 24px; }
+  #hud { grid-template-columns: 1fr; }
+  #log { height: 130px; }
+  #marks span:not(:first-child):not(:last-child) i { display: none; }
+  #overlay .epitaph { width: 34%; margin-top: 19%; }
 }
